@@ -1,7 +1,5 @@
 package com.github.naturs.text.recorder;
 
-import com.github.naturs.text.recorder.internal.Utils;
-
 /**
  * 将{@link TextLine}转换为字符串的转换器
  *
@@ -42,45 +40,6 @@ public interface TextLineConverter {
         protected static boolean isEqualsType(Class<? extends TextLine> type,
                                               Class<? extends TextLine> expectedType) {
             return expectedType == type;
-        }
-
-        protected static StackTraceElement getInvokeStackTrace() {
-            return Utils.getStackTraceElement(TextRecorder.class);
-        }
-
-        protected static String getReadableXml(String rawXml, int indentFactor) {
-            return Utils.formatXml(rawXml, indentFactor);
-        }
-
-        protected static String getReadableJson(String rawJson, int indentFactor) {
-            return Utils.formatJson(rawJson, indentFactor);
-        }
-
-        protected String getMethodInfo(StackTraceElement element) {
-            return Utils.getMethodInfo(element);
-        }
-
-    }
-
-    abstract class AbsTextLineConverter implements TextLineConverter {
-        protected static StackTraceElement getInvokeStackTrace() {
-            return Utils.getStackTraceElement(TextRecorder.class);
-        }
-
-        protected static String getReadableXml(String rawXml, int indentFactor) {
-            return Utils.formatXml(rawXml, indentFactor);
-        }
-
-        protected static String getReadableJson(String rawJson, int indentFactor) {
-            return Utils.formatJson(rawJson, indentFactor);
-        }
-
-        protected static String getMethodInfo(StackTraceElement element) {
-            return Utils.getMethodInfo(element);
-        }
-
-        protected static String getStackTrace(Throwable t) {
-            return Utils.getStackTrace(t).trim();
         }
 
     }

@@ -42,7 +42,7 @@ public class Sample {
         };
         TextRecorder.init(Schedulers.io(),
                 GenericTextLineConverterFactory.create(),
-                GenericTextLineFileProcessorFactory.create("temp", 5 * 1024 * 1024, 5, 0.1f),
+                GenericTextLineFileProcessorFactory.create("temp", 500 * 1024, 5, 0.2f),
                 printer
         );
 
@@ -88,7 +88,7 @@ public class Sample {
             recorder.appendBlankLine();
             recorder.apply();
 
-//            sleep(random.nextInt(50));
+            sleep(random.nextInt(50));
         }
     }
 

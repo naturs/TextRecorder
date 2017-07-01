@@ -3,6 +3,7 @@ package com.github.naturs.text.recorder.converter;
 import com.github.naturs.text.recorder.GenericTextLine;
 import com.github.naturs.text.recorder.TextLine;
 import com.github.naturs.text.recorder.TextLineConverter;
+import com.github.naturs.text.recorder.internal.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
  * {@link GenericTextLine}的默认转换方式
  * Created by naturs on 2017/6/28.
  */
-public class GenericTextLineConverter extends TextLineConverter.AbsTextLineConverter {
+public class GenericTextLineConverter implements TextLineConverter {
 
     private static final String CRLF = "\n";
     private static final String SPACE = "  ";
@@ -49,7 +50,7 @@ public class GenericTextLineConverter extends TextLineConverter.AbsTextLineConve
 
         if (line.getStackTrace() != null) {
             appendSpace(builder, line);
-            builder.append(getMethodInfo(line.getStackTrace()));
+            builder.append(Formatter.getMethodInfo(line.getStackTrace()));
         }
     }
 
@@ -62,12 +63,12 @@ public class GenericTextLineConverter extends TextLineConverter.AbsTextLineConve
             switch (line.getMessageType()) {
                 case GenericTextLine.TYPE_MESSAGE_XML:
                     builder.append(CRLF);
-                    builder.append(getReadableXml(line.getExtraMessage(), INDENT));
+                    builder.append(Formatter.formatXml(line.getExtraMessage(), INDENT));
                     break;
 
                 case GenericTextLine.TYPE_MESSAGE_JSON:
                     builder.append(CRLF);
-                    builder.append(getReadableJson(line.getExtraMessage(), INDENT));
+                    builder.append(Formatter.formatJson(line.getExtraMessage(), INDENT));
                     break;
 
                 case GenericTextLine.TYPE_DIVIDER:
@@ -86,7 +87,7 @@ public class GenericTextLineConverter extends TextLineConverter.AbsTextLineConve
             builder.append(CRLF);
             builder.append(EXCEPTION_START);
             builder.append(CRLF);
-            builder.append(getStackTrace(line.getThrowable()));
+            builder.append(Utils.getStackTrace(line.getThrowable()));
             builder.append(CRLF);
             builder.append(EXCEPTION_END);
         }
