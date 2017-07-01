@@ -1,0 +1,17 @@
+group 'com.github.naturs.text.recorder'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':text-recorder')
+    compile project(':text-recorder-converter')
+    compile project(':text-recorder-processor')
+}

@@ -1,0 +1,6 @@
+rootProject.name = 'TextRecorder'
+include 'text-recorder'
+include 'text-recorder-processor'
+include 'text-recorder-converter'
+include 'sample'
+
