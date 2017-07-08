@@ -46,7 +46,7 @@ public class Sample {
                 printer
         );
 
-        final TextRecorder recorder = new TextRecorder();
+        final TextRecorder recorder = TextRecorder.with("main-thread");
 
         for (;;) {
             Random random = new Random();
@@ -83,7 +83,6 @@ public class Sample {
                     recorder.append(true, "This is a raw throwable -> " + System.currentTimeMillis(), e6);
                     break;
             }
-            recorder.tag("main-thread");
 
             recorder.appendBlankLine();
             recorder.apply();

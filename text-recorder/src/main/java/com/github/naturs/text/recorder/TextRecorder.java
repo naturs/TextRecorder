@@ -25,23 +25,32 @@ public class TextRecorder {
         TextLineLogPrinter.init(printer);
     }
 
+    public static TextRecorder with() {
+        return with(null);
+    }
+
+    /**
+     * 创建{@link TextRecorder}对象
+     * @param tag 日志标签，可以为任何内容，具体语义需要根据{@link TextLineConverter}或
+     *            {@link TextLineProcessor}来决定，比如可以代表文本存储路径的文件夹等。
+     */
+    public static TextRecorder with(Object tag) {
+        return new TextRecorder(tag);
+    }
+
     // 创建当前对象的线程
     private final Thread creatorThread;
     // 日志内容
     private final ArrayList<TextLine> lines;
-    // 日志tag
+    // 日志tag，用于标识日志
     private Object tag;
     private TextLineConverter.Factory converterFactory;
     private TextLineProcessor.Factory processorFactory;
 
-    public TextRecorder() {
-        creatorThread = Thread.currentThread();
-        lines = new ArrayList<TextLine>();
-    }
-
-    public TextRecorder tag(Object tag) {
+    private TextRecorder(Object tag) {
         this.tag = tag;
-        return this;
+        this.creatorThread = Thread.currentThread();
+        this.lines = new ArrayList<TextLine>();
     }
 
     public void converterFactory(TextLineConverter.Factory factory) {
