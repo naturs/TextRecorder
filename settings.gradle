@@ -3,4 +3,5 @@ include 'text-recorder'
 include 'text-recorder-processor'
 include 'text-recorder-converter'
 include 'sample'
+include 'text-recorder-markdown'
 

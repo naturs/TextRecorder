@@ -5,7 +5,7 @@ package com.github.naturs.text.recorder;
  *
  * Created by naturs on 2017/6/26.
  */
-public final class GenericTextLine extends TextLine {
+public class GenericTextLine extends TextLine {
 
     /**
      * 消息类型：普通消息
@@ -45,13 +45,18 @@ public final class GenericTextLine extends TextLine {
      */
     private Throwable throwable;
 
+    public GenericTextLine(Object tag, Class<?> recordClass) {
+        super(tag, recordClass);
+    }
+
     public GenericTextLine(int messageType,
                            boolean rawMessage,
                            String message,
                            String extraMessage,
                            Throwable throwable,
+                           Object tag,
                            Class<?> recordClass) {
-        super(recordClass);
+        super(tag, recordClass);
         this.messageType = messageType;
         setRawMessage(rawMessage);
         this.message = message;
@@ -75,4 +80,19 @@ public final class GenericTextLine extends TextLine {
         return throwable;
     }
 
+    protected void setMessageType(int messageType) {
+        this.messageType = messageType;
+    }
+
+    protected void setMessage(String message) {
+        this.message = message;
+    }
+
+    protected void setExtraMessage(String extraMessage) {
+        this.extraMessage = extraMessage;
+    }
+
+    protected void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
+    }
 }

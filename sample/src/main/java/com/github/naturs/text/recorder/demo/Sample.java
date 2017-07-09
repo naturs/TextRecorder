@@ -42,11 +42,11 @@ public class Sample {
         };
         TextRecorder.init(Schedulers.io(),
                 GenericTextLineConverterFactory.create(),
-                GenericTextLineFileProcessorFactory.create("temp", 500 * 1024, 5, 0.2f),
+                GenericTextLineFileProcessorFactory.create("temp", 500 * 1024, 5, 0.2f, "log"),
                 printer
         );
 
-        final TextRecorder recorder = TextRecorder.with("main-thread");
+        final TextRecorder recorder = TextRecorder.with("module");
 
         for (;;) {
             Random random = new Random();

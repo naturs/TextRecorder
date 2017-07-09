@@ -7,7 +7,7 @@ import com.github.naturs.text.recorder.internal.Utils;
  *
  * Created by naturs on 2017/6/29.
  */
-public abstract class TextLine<T extends TextLine> {
+public abstract class TextLine {
 
     /**
      * 日志标签，含义不定，可由用户自己确定
@@ -34,7 +34,8 @@ public abstract class TextLine<T extends TextLine> {
      */
     private String convertedMessage;
 
-    protected TextLine(Class<?> recordClass) {
+    protected TextLine(Object tag, Class<?> recordClass) {
+        this.tag = tag;
         this.timestamp = System.currentTimeMillis();
         this.stackTrace = Utils.getStackTraceElement(recordClass);
     }

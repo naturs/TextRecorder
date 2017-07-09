@@ -12,7 +12,7 @@ import com.github.naturs.text.recorder.TextLineProcessor;
 public class GenericTextLineFileProcessorFactory extends TextLineProcessor.Factory {
 
     public static GenericTextLineFileProcessorFactory create(String rootDirPath) {
-        return create(rootDirPath, 10 * 1024 * 1024L, 7, 0.5f);
+        return create(rootDirPath, 10 * 1024 * 1024L, 7, 0.5f, "txt");
     }
 
     /**
@@ -26,29 +26,35 @@ public class GenericTextLineFileProcessorFactory extends TextLineProcessor.Facto
     public static GenericTextLineFileProcessorFactory create(String rootDirPath,
                                                              long maxFileSize,
                                                              int maxFileCount,
-                                                             float fileSplitRatio) {
-        return new GenericTextLineFileProcessorFactory(rootDirPath, maxFileSize, maxFileCount, fileSplitRatio);
+                                                             float fileSplitRatio,
+                                                             String fileSuffix) {
+        return new GenericTextLineFileProcessorFactory(rootDirPath, maxFileSize, maxFileCount, fileSplitRatio, fileSuffix);
     }
 
     private final String rootDirPath;
     private final long maxFileSize;
     private final int maxFileCount;
     private final float fileSplitRatio;
+    private final String fileSuffix;
 
     private GenericTextLineFileProcessorFactory(String rootDirPath,
                                                 long maxFileSize,
                                                 int maxFileCount,
-                                                float fileSplitRatio) {
+                                                float fileSplitRatio,
+                                                String fileSuffix) {
         this.rootDirPath = rootDirPath;
         this.maxFileSize = maxFileSize;
         this.maxFileCount = maxFileCount;
         this.fileSplitRatio = fileSplitRatio;
+        this.fileSuffix = fileSuffix;
     }
 
     @Override
     public TextLineProcessor processor(Class<? extends TextLine> type) {
-        if (isEqualsType(type, GenericTextLine.class)) {
-            return new GenericTextLineFileProcessor(rootDirPath, maxFileSize, maxFileCount, fileSplitRatio);
+        if (isAssignableFrom(type, GenericTextLine.class)) {
+            return new GenericTextLineFileProcessor(
+                    rootDirPath, maxFileSize, maxFileCount, fileSplitRatio, fileSuffix
+            );
         }
         return null;
     }

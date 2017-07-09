@@ -19,7 +19,8 @@ public class GenericTextLineConverterTest {
 
     @Test
     public void test_DefaultLogLineConverter_convert_normal() {
-        GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_NORMAL, false, "This is a log.", null, null, GenericTextLineConverterTest.class);
+        GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_NORMAL, false, "This is a log.", null, null,
+                null, GenericTextLineConverterTest.class);
         String rawLine = mGenericTextLineConverter.convert(null, line);
         System.out.println(rawLine);
     }
@@ -28,7 +29,7 @@ public class GenericTextLineConverterTest {
     public void test_DefaultLogLineConverter_convert_throwable() {
         RuntimeException exception = new RuntimeException("has error");
         GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_NORMAL, false,
-                "This is a throwable log.", null, exception, GenericTextLineConverterTest.class);
+                "This is a throwable log.", null, exception, null, GenericTextLineConverterTest.class);
         String rawLine = mGenericTextLineConverter.convert(null, line);
         System.out.println(rawLine);
     }
@@ -36,7 +37,8 @@ public class GenericTextLineConverterTest {
     @Test
     public void test_DefaultLogLineConverter_convert_json() {
         String json = "{\"name\":\"abc\",\"age\":18,\"other\":{\"other1\":\"otherValue1\",\"other2\":otherValue2}}";
-        GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_JSON, false, "json结果：", json, null, GenericTextLineConverterTest.class);
+        GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_JSON, false, "json结果：", json, null,
+                null, GenericTextLineConverterTest.class);
         String rawLine = mGenericTextLineConverter.convert(null, line);
         System.out.println(rawLine);
     }
@@ -49,7 +51,8 @@ public class GenericTextLineConverterTest {
                 "<item name=\"k2\" messageType=\"b\">value2</item>" +
                 "<integer name=\"k3\">5</integer>" +
                 "</resources>";
-        GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_XML, false, "xml结果：", xml, null, GenericTextLineConverterTest.class);
+        GenericTextLine line = new GenericTextLine(GenericTextLine.TYPE_MESSAGE_XML, false, "xml结果：", xml, null,
+                null, GenericTextLineConverterTest.class);
         String rawLine = mGenericTextLineConverter.convert(null, line);
         System.out.println(rawLine);
     }

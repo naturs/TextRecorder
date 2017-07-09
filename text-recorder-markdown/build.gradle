@@ -11,9 +11,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.json:json:20160212'
     compile project(':text-recorder')
-    compile project(':text-recorder-converter')
-    compile project(':text-recorder-processor')
-    compile project(':text-recorder-processor')
-    compile project(':text-recorder-markdown')
 }

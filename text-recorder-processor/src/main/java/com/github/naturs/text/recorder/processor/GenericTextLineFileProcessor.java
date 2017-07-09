@@ -31,6 +31,7 @@ public class GenericTextLineFileProcessor implements TextLineProcessor {
     protected final long maxFileSize;
     protected final int maxFileCount;
     protected final float fileSplitRatio;
+    protected final String fileSuffix;
 
     /**
      *
@@ -39,15 +40,18 @@ public class GenericTextLineFileProcessor implements TextLineProcessor {
      * @param maxFileCount 每个文件夹下面最大文件数量
      * @param fileSplitRatio 单文件超出大小后的切割比例，从后往前切割，取值范围[0, 1]，
      *                       比如fileSplitRatio=0.8f，则保留文件后面80%的内容，即舍弃文件开头20%的内容。
+     * @param fileSuffix 文件后缀名
      */
     public GenericTextLineFileProcessor(String rootDirPath,
                                         long maxFileSize,
                                         int maxFileCount,
-                                        float fileSplitRatio) {
+                                        float fileSplitRatio,
+                                        String fileSuffix) {
         this.rootDirPath = rootDirPath;
         this.maxFileSize = maxFileSize;
         this.maxFileCount = maxFileCount;
         this.fileSplitRatio = Math.max(0, Math.min(1.0f, fileSplitRatio));
+        this.fileSuffix = fileSuffix;
     }
 
     @Override
@@ -111,7 +115,8 @@ public class GenericTextLineFileProcessor implements TextLineProcessor {
     }
 
     protected String getFileName(TextLine line) {
-        return DATE_FORMAT.format(new Date(line.getTimestamp())) + ".txt";
+        return DATE_FORMAT.format(new Date(line.getTimestamp()))
+                + "." + (fileSuffix == null ? "txt" : fileSuffix);
     }
 
     /**
@@ -194,6 +199,11 @@ public class GenericTextLineFileProcessor implements TextLineProcessor {
 
         try {
             tempFile = new File(file.getParentFile(), file.getName() + ".tmp");
+
+            if (TextLineLogPrinter.isLoggable(TAG)) {
+                TextLineLogPrinter.print(TAG, "临时文件为：" + tempFile.getAbsolutePath());
+            }
+
             originAccessFile = new RandomAccessFile(file, "rw");
             tempFileOutputStream = new FileOutputStream(tempFile, false);
 
@@ -240,16 +250,6 @@ public class GenericTextLineFileProcessor implements TextLineProcessor {
                 if (TextLineLogPrinter.isLoggable(TAG)) {
                     TextLineLogPrinter.print(TAG, "临时文件重命名为：" + file.getAbsolutePath()
                             + " " + (renameSuccess ? "成功" : "失败"));
-                }
-            }
-
-            if (file.delete()) {
-
-
-                // TODO: 2017/6/30
-            } else {
-                if (TextLineLogPrinter.isLoggable(TAG)) {
-                    TextLineLogPrinter.print(TAG, "旧文件 " + file.getAbsolutePath() + " 删除失败");
                 }
             }
         }

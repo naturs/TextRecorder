@@ -102,7 +102,7 @@ public class TextRecorder {
     }
 
     public TextRecorder append(int messageType, boolean rawMessage, String message, String extraMessage, Throwable t) {
-        TextLine line = new GenericTextLine(messageType, rawMessage, message, extraMessage, t, TextRecorder.class);
+        TextLine line = new GenericTextLine(messageType, rawMessage, message, extraMessage, t, null, TextRecorder.class);
         return append(line);
     }
 
@@ -159,7 +159,6 @@ public class TextRecorder {
     }
 
     private void resetThis() {
-        this.tag = null;
         this.lines.clear();
         this.converterFactory = null;
         this.processorFactory = null;
