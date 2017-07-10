@@ -11,16 +11,16 @@ buildscript {
     }
 }
 
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
 allprojects {
     group 'com.github.naturs.text.recorder'
-    version '1.0'
+    version '1.3'
 
     apply plugin: 'java'
 
     sourceCompatibility = JavaVersion.VERSION_1_6
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 }

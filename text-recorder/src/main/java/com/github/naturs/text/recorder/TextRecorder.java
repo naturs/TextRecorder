@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 文本记录
- * <p/>
+ * <p>
  * Created by naturs on 2017/6/26.
  */
 public class TextRecorder {

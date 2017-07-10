@@ -1,16 +1,33 @@
-group 'com.github.naturs.text.recorder'
-version '1.0'
-
-apply plugin: 'java'
-
-sourceCompatibility = JavaVersion.VERSION_1_6
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.json:json:20160212'
     compile project(':text-recorder')
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'text-recorder-converter'
+
+    publishedGroupId = 'com.github.naturs.text.recorder'
+    libraryName = 'text-recorder-converter'
+    artifact = 'text-recorder-converter'
+
+    libraryDescription = 'A java library converter for record some text.'
+
+    siteUrl = 'https://github.com/naturs/TextRecorder/'
+    gitUrl = 'https://github.com/naturs/TextRecorder.git'
+
+    libraryVersion = version
+
+    developerId = 'naturs'
+    developerName = 'Naturs'
+    developerEmail = 'naturs@users.noreply.github.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

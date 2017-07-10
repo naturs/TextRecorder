@@ -1,9 +1,9 @@
 package com.github.naturs.text.recorder.demo;
 
-import com.github.naturs.text.recorder.MarkdownTextLine;
 import com.github.naturs.text.recorder.Schedulers;
 import com.github.naturs.text.recorder.TextRecorder;
-import com.github.naturs.text.recorder.converter.MarkdownTextLineConverterFactory;
+import com.github.naturs.text.recorder.markdown.MarkdownTextLine;
+import com.github.naturs.text.recorder.markdown.converter.MarkdownTextLineConverterFactory;
 import com.github.naturs.text.recorder.processor.GenericTextLineFileProcessorFactory;
 
 /**

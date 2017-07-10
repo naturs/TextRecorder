@@ -1,4 +1,4 @@
-package com.github.naturs.text.recorder.converter;
+package com.github.naturs.text.recorder.markdown.converter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -1,4 +1,6 @@
-package com.github.naturs.text.recorder;
+package com.github.naturs.text.recorder.markdown;
+
+import com.github.naturs.text.recorder.GenericTextLine;
 
 /**
  *

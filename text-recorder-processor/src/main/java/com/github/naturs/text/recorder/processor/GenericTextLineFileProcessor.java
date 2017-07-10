@@ -1,7 +1,7 @@
 package com.github.naturs.text.recorder.processor;
 
-import com.github.naturs.text.recorder.GenericTextLine;
 import com.github.naturs.text.recorder.TextLine;
+import com.github.naturs.text.recorder.GenericTextLine;
 import com.github.naturs.text.recorder.TextLineLogPrinter;
 import com.github.naturs.text.recorder.TextLineProcessor;
 import com.github.naturs.text.recorder.internal.Utils;
@@ -14,12 +14,13 @@ import java.util.*;
  * 能将{@link GenericTextLine}保存到本地的处理器。
  * 该类会使用{@link GenericTextLine#getTag()}作为目录，日志内容按天保存。
  * <p>
- * 规则：
  *
- * <li>每个文件有最大大小限制，超出大小后按fileSplitRatio的值切割文件，保留文件后面的内容</li>
- * <li>每个文件夹有文件数量限制，超出数量后按文件名排序，删除最前面的文件</li>
+ * 规则：<br>
  *
- * <p/>
+ * 1. 每个文件有最大大小限制，超出大小后按fileSplitRatio的值切割文件，保留文件后面的内容<br>
+ * 2. 每个文件夹有文件数量限制，超出数量后按文件名排序，删除最前面的文件<br>
+ *
+ * <p>
  *
  * Created by naturs on 2017/6/28.
  */

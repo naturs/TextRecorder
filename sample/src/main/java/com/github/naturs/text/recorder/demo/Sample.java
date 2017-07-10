@@ -1,7 +1,7 @@
 package com.github.naturs.text.recorder.demo;
 
-import com.github.naturs.text.recorder.Schedulers;
 import com.github.naturs.text.recorder.LogPrinter;
+import com.github.naturs.text.recorder.Schedulers;
 import com.github.naturs.text.recorder.TextRecorder;
 import com.github.naturs.text.recorder.converter.GenericTextLineConverterFactory;
 import com.github.naturs.text.recorder.processor.GenericTextLineFileProcessorFactory;

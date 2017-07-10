@@ -1,6 +1,5 @@
 package com.github.naturs.text.recorder.processor;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
