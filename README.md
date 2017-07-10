@@ -16,6 +16,40 @@
 
 ### 1. 添加引用 ###
 
+首先需要添加核心库（必须）：
+
+	compile 'com.github.naturs.text.recorder:text-recorder:1.5'
+
+如果采用默认的converter（可自定义，将文本转换为指定格式的字符串）：
+
+	compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5'
+
+如果采用默认的processor（可自定义，将文本内容保存到文件）：
+
+	compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
+
+如果使用Markdown格式来转换文本内容（可自定义，替换默认的converter）：
+
+	compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5'
+
+注意，如果是在Android环境中使用，需要排除json相关包：
+
+示例（Android环境）：
+
+	// 默认方式
+	compile 'com.github.naturs.text.recorder:text-recorder:1.5'
+    compile ('com.github.naturs.text.recorder:text-recorder-converter:1.5', {
+        exclude group: 'org.json', module: 'json'
+    })
+    compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
+
+    // Markdown方式，markdown包中不包含processor相关处理方式
+    compile 'com.github.naturs.text.recorder:text-recorder:1.5'
+    compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
+    compile ('com.github.naturs.text.recorder:text-recorder-markdown:1.5', {
+        exclude group: 'org.json', module: 'json'
+    })
+
 ### 2. 初始化 ###
 
 `TextRecorder`需要添加默认配置，以便后续调用。
@@ -24,10 +58,10 @@
 
 ```java
 TextRecorder.init(
-		Scheduler,
-        TextLineConverter.Factory,
-        TextLineProcessor.Factory,
-        LogPrinter
+	Scheduler,
+    TextLineConverter.Factory,
+    TextLineProcessor.Factory,
+    LogPrinter
 );
 ```
 
@@ -77,6 +111,28 @@ recorder.apply();
 2. 实现自定义的`TextLineConverter`及`TextLineConverter.Factory`；
 3. 实现自定义的`TextLineProcessor`及`TextLineProcessor.Factory`；
 4. 使用自定义的`TextLineConverter.Factory`和`TextLineProcessor.Factory`初始化`TextRecorder`，并用自定义`TextLine`进行文本记录；
+
+```java
+TextRecorder recorder = TextRecorder.with("markdown");
+
+MarkdownTextLine textLine = MarkdownTextLine.with().text("I'm a text.");
+recorder.append(textLine);
+
+RuntimeException exception = new RuntimeException("mock an exception.");
+textLine = MarkdownTextLine.with().throwable("I'm an exception.", exception);
+recorder.append(textLine);
+
+textLine = MarkdownTextLine.with().divider();
+recorder.append(textLine);
+
+textLine = MarkdownTextLine.with().json("I'm a json.", Sample.JSON);
+recorder.append(textLine);
+
+textLine = MarkdownTextLine.with().xml("I'm a xml.", Sample.XML);
+recorder.append(textLine);
+
+recorder.apply();
+```
 
 ## License ##
 
