@@ -16,19 +16,19 @@
 
 ### 1. 添加引用 ###
 
-首先需要添加核心库（必须）：
+首先需要添加核心库（**必须**）：
 
 	compile 'com.github.naturs.text.recorder:text-recorder:1.5'
 
-如果采用默认的converter（可自定义，将文本转换为指定格式的字符串）：
+如果采用默认的converter（**可自定义**，将文本转换为指定格式的字符串）：
 
 	compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5'
 
-如果采用默认的processor（可自定义，将文本内容保存到文件）：
+如果采用默认的processor（**可自定义**，将文本内容保存到文件）：
 
 	compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
 
-如果使用Markdown格式来转换文本内容（可自定义，替换默认的converter）：
+如果使用Markdown格式来转换文本内容（**可自定义**，替换默认的converter）：
 
 	compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5'
 
@@ -58,7 +58,7 @@
 
 ```java
 TextRecorder.init(
-	Scheduler,
+    Scheduler,
     TextLineConverter.Factory,
     TextLineProcessor.Factory,
     LogPrinter
@@ -87,6 +87,8 @@ TextRecorder.init(
 
 **`TextRecorder`默认使用`GenericTextLine`来记录文本内容。**
 
+示例：（可参考[Sample.java](sample/src/main/java/com/github/naturs/text/recorder/demo/Sample.java)）
+
 ```java
 // 参数tag代表日志标签，最终会在Converter或Processor中用到
 TextRecorder recorder = TextRecorder.with("module");
@@ -111,6 +113,9 @@ recorder.apply();
 2. 实现自定义的`TextLineConverter`及`TextLineConverter.Factory`；
 3. 实现自定义的`TextLineProcessor`及`TextLineProcessor.Factory`；
 4. 使用自定义的`TextLineConverter.Factory`和`TextLineProcessor.Factory`初始化`TextRecorder`，并用自定义`TextLine`进行文本记录；
+5. 使用`TextRecorder`进行内容提交；
+
+示例：（可参考[SampleMarkdown.java](sample/src/main/java/com/github/naturs/text/recorder/demo/SampleMarkdown.java)）
 
 ```java
 TextRecorder recorder = TextRecorder.with("markdown");
