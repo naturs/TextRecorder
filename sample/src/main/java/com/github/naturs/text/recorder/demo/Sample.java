@@ -47,6 +47,20 @@ public class Sample {
         );
 
         final TextRecorder recorder = TextRecorder.with("module");
+//        recorder.append(Thread.currentThread() + "");
+//        recorder.appendBlankLine();
+//        recorder.appendXml("This is a xml -> " + System.currentTimeMillis(), XML);
+//        recorder.appendBlankLine();
+//        recorder.appendJson("This is a json -> " + System.currentTimeMillis(), JSON);
+//        recorder.appendBlankLine();
+//        RuntimeException e = new RuntimeException("Test record throwable.");
+//        recorder.append("This is an exception -> " + System.currentTimeMillis(), e);
+//        recorder.appendBlankLine();
+//        recorder.appendDivider();
+//
+//        recorder.commit();
+//
+//        if (true) return;
 
         for (;;) {
             Random random = new Random();

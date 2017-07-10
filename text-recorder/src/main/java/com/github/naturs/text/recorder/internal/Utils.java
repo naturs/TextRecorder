@@ -20,7 +20,7 @@ public class Utils {
         }
         StringWriter sw = new StringWriter();
         t.printStackTrace(new PrintWriter(sw));
-        return sw.toString();
+        return sw.toString().trim();
     }
 
     public static StackTraceElement getStackTraceElement(Class<?> invokeClass) {

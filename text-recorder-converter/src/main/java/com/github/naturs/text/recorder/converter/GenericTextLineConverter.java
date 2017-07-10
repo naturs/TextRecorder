@@ -71,14 +71,21 @@ public class GenericTextLineConverter implements TextLineConverter {
                     builder.append(Formatter.formatJson(line.getExtraMessage(), INDENT));
                     break;
 
-                case GenericTextLine.TYPE_DIVIDER:
-                    builder.append(CRLF).append(DIVIDER);
-                    break;
-
-                case GenericTextLine.TYPE_BLANK_LINE:
-                    builder.append(CRLF).append(BLANK_LINE);
+                default:
+                    builder.append(CRLF);
+                    builder.append(line.getExtraMessage());
                     break;
             }
+        }
+
+        switch (line.getMessageType()) {
+            case GenericTextLine.TYPE_DIVIDER:
+                builder.append(DIVIDER);
+                break;
+
+            case GenericTextLine.TYPE_BLANK_LINE:
+                builder.append(BLANK_LINE);
+                break;
         }
     }
 

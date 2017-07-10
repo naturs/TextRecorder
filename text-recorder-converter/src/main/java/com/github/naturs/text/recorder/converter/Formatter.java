@@ -62,7 +62,7 @@ class Formatter {
             message = rawJson;
         }
 
-        return message;
+        return message.trim();
     }
 
     /**
@@ -80,9 +80,9 @@ class Formatter {
                     "{http://xml.apache.org/xslt}indent-amount",
                     String.valueOf(indentFactor));
             transformer.transform(xmlInput, xmlOutput);
-            return xmlOutput.getWriter().toString().replaceFirst(">", ">\n");
+            return xmlOutput.getWriter().toString().replaceFirst(">", ">\n").trim();
         } catch (Exception e) {
-            return rawXml;
+            return rawXml.trim();
         }
     }
 }
