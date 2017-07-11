@@ -18,19 +18,19 @@
 
 首先需要添加核心库（**必须**）：
 
-	compile 'com.github.naturs.text.recorder:text-recorder:1.5'
+	compile 'com.github.naturs.text.recorder:text-recorder:1.5.1'
 
 如果采用默认的converter（**可自定义**，将文本转换为指定格式的字符串）：
 
-	compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5'
+	compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5.1'
 
 如果采用默认的processor（**可自定义**，将文本内容保存到文件）：
 
-	compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
+	compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5.1'
 
 如果使用Markdown格式来转换文本内容（**可自定义**，替换默认的converter）：
 
-	compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5'
+	compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5.1'
 
 注意，如果是运行在Java环境中使用，需要添加json相关包：
 
@@ -39,14 +39,14 @@
 示例（Android环境）：
 
 	// 默认方式
-	compile 'com.github.naturs.text.recorder:text-recorder:1.5'
-    compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5'
-    compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
+	compile 'com.github.naturs.text.recorder:text-recorder:1.5.1'
+    compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5.1'
+    compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5.1'
 
     // Markdown方式，markdown包中不包含processor相关处理方式
-    compile 'com.github.naturs.text.recorder:text-recorder:1.5'
-    compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
-    compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5'
+    compile 'com.github.naturs.text.recorder:text-recorder:1.5.1'
+    compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5.1'
+    compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5.1'
 
 ### 2. 初始化 ###
 
