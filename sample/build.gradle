@@ -16,4 +16,5 @@ dependencies {
     compile project(':text-recorder-processor')
     compile project(':text-recorder-processor')
     compile project(':text-recorder-markdown')
+    compile 'org.json:json:20160212'
 }

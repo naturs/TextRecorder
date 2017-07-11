@@ -13,7 +13,7 @@ buildscript {
 
 allprojects {
     group 'com.github.naturs.text.recorder'
-    version '1.5'
+    version '1.5.1'
 
     apply plugin: 'java'
 

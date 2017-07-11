@@ -32,23 +32,21 @@
 
 	compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5'
 
-注意，如果是在Android环境中使用，需要排除json相关包：
+注意，如果是运行在Java环境中使用，需要添加json相关包：
+
+    compile 'org.json:json:20160212'
 
 示例（Android环境）：
 
 	// 默认方式
 	compile 'com.github.naturs.text.recorder:text-recorder:1.5'
-    compile ('com.github.naturs.text.recorder:text-recorder-converter:1.5', {
-        exclude group: 'org.json', module: 'json'
-    })
+    compile 'com.github.naturs.text.recorder:text-recorder-converter:1.5'
     compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
 
     // Markdown方式，markdown包中不包含processor相关处理方式
     compile 'com.github.naturs.text.recorder:text-recorder:1.5'
     compile 'com.github.naturs.text.recorder:text-recorder-processor:1.5'
-    compile ('com.github.naturs.text.recorder:text-recorder-markdown:1.5', {
-        exclude group: 'org.json', module: 'json'
-    })
+    compile 'com.github.naturs.text.recorder:text-recorder-markdown:1.5'
 
 ### 2. 初始化 ###
 
